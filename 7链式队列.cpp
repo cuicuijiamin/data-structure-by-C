@@ -1,232 +1,232 @@
-////¶ÓÁĞ½á¹¹¡ª¡ªÁ´Ê½½á¹¹
-//#include"M.h"
-//const int INF = 1000000;
-//typedef int ElementType;
-//typedef struct Node
-//{
-//	ElementType data;
-//	struct Node * next;
-//}QNode;
-//typedef struct
-//{
-//	QNode * head;
-//	QNode * back;//±£´æÎ²Ö¸Õë
-//}LinkQueue;
-//
-//void initQueue(LinkQueue &Q);
-//bool queueEmpty(LinkQueue & Q);
-//void destoryQueue(LinkQueue & Q);
-//void clearQueue(LinkQueue & Q);
-//int queueLength(LinkQueue & Q);
-//ElementType getTop(LinkQueue & Q);
-//void push(LinkQueue & Q, ElementType e);
-//void pop(LinkQueue & Q);
-//void queueTraverse(LinkQueue & Q);
-//
-//void initQueue(LinkQueue &Q)
-//{
-//	Q.head = Q.back = new QNode;
-//	if (Q.head == nullptr)
-//	{
-//		printf("ÄÚ´æ·ÖÅäÊ§°Ü£¡\n");
-//	}
-//	Q.head->next = nullptr;
-//}
-//bool queueEmpty(LinkQueue & Q)
-//{
-//	if (Q.head->next == nullptr)
-//		return true;
-//	return false;
-//}
-//void destoryQueue(LinkQueue & Q)
-//{
-//	clearQueue(Q);
-//	delete Q.head;
-//	Q.head = Q.back = nullptr;
-//	printf("¶ÓÁĞÍê³ÉÏú»Ù\n");
-//}
-//void clearQueue(LinkQueue & Q)
-//{
-//	if (queueEmpty(Q))
-//	{
-//		printf("¶ÓÁĞ²»ĞèÒªÇåÀí£¬±¾À´¾ÍÊÇ¿ÕµÄ\n");
-//		return;
-//	}
-//	QNode * p = Q.head->next;//Ê×Ôª½Úµã
-//	QNode * q;
-//	while (p)
-//	{
-//		q = p->next;
-//		delete p;
-//		p = q;
-//	}
-//	Q.back = Q.head;
-//	Q.head->next = nullptr;
-//}
-//int queueLength(LinkQueue & Q)
-//{
-//	int len = 0;
-//	QNode * p = Q.head;
-//	while (p->next)
-//	{
-//		len++;
-//		p = p->next;
-//	}
-//	return len;
-//}
-//ElementType getTop(LinkQueue & Q)
-//{
-//	if (queueEmpty(Q))
-//		return INF;//·µ»ØÎŞĞ§Öµ
-//	else
-//		return Q.head->next->data;
-//}
-//void push(LinkQueue & Q, ElementType e)
-//{
-//	//Èë¶Ó
-//	if (Q.back == nullptr)
-//	{
-//		printf("¶ÓÁĞÃ»ÓĞ³õÊ¼»¯,²»ÔÊĞí²åÈë\n");
-//		return;
-//	}
-//	QNode * temp = new QNode;
-//	temp->data = e;
-//	Q.back->next = temp;
-//	temp->next = nullptr;
-//	Q.back = temp;
-//}
-//void pop(LinkQueue & Q)
-//{
-//	if (queueEmpty(Q))
-//	{
-//		printf("µ¯³öÊ§°Ü\n");
-//		return;
-//	}
-//	QNode * temp = Q.head->next;//ÒªÉ¾µÄ
-//	Q.head->next = temp->next;
-//	delete temp;
-//}
-//void queueTraverse(LinkQueue & Q)
-//{
-//
-//	printf("=================================\n");
-//	if (queueEmpty(Q))
-//		printf("¶ÓÁĞÎª¿Õ£¬Ã»ÓĞÔªËØ£¡\n");
-//	else
-//	{
-//		printf("´Ó¶ÓÍ·¿ªÊ¼ÒÀ´ÎÎª£º\n");
-//		QNode * temp = Q.head->next;//Í·½Úµã
-//		while (temp)
-//		{
-//			printf("%d---", temp->data);
-//			temp = temp->next;
-//		}
-//		printf("½áÊø\n");
-//	}
-//	printf("=================================\n");
-//
-//}
-//
-//int main()
-//{
-//	LinkQueue Q;
-//	initQueue(Q);//³õÊ¼»¯
-//	queueTraverse(Q);
-//	for (int i = 0; i < 5; ++i)
-//	{
-//		push(Q, i * 10 + 1);
-//	}
-//	pop(Q);
-//	printf("ÏÖÔÚ¶ÓÁĞµÄ³¤¶ÈÎª£º%d\n", queueLength(Q));
-//	queueTraverse(Q);
-//	printf("¶ÓÍ·ÔªËØÎª£º%d\n", getTop(Q));
-//	clearQueue(Q);
-//	destoryQueue(Q);
-//	return 0;
-//}
+//é˜Ÿåˆ—ç»“æ„â€”â€”é“¾å¼ç»“æ„
+#include"M.h"
+const int INF = 1000000;
+typedef int ElementType;
+typedef struct Node
+{
+	ElementType data;
+	struct Node * next;
+}QNode;
+typedef struct
+{
+	QNode * head;
+	QNode * back;//ä¿å­˜å°¾æŒ‡é’ˆ
+}LinkQueue;
+
+void initQueue(LinkQueue &Q);
+bool queueEmpty(LinkQueue & Q);
+void destoryQueue(LinkQueue & Q);
+void clearQueue(LinkQueue & Q);
+int queueLength(LinkQueue & Q);
+ElementType getTop(LinkQueue & Q);
+void push(LinkQueue & Q, ElementType e);
+void pop(LinkQueue & Q);
+void queueTraverse(LinkQueue & Q);
+
+void initQueue(LinkQueue &Q)
+{
+	Q.head = Q.back = new QNode;
+	if (Q.head == nullptr)
+	{
+		printf("å†…å­˜åˆ†é…å¤±è´¥ï¼\n");
+	}
+	Q.head->next = nullptr;
+}
+bool queueEmpty(LinkQueue & Q)
+{
+	if (Q.head->next == nullptr)
+		return true;
+	return false;
+}
+void destoryQueue(LinkQueue & Q)
+{
+	clearQueue(Q);
+	delete Q.head;
+	Q.head = Q.back = nullptr;
+	printf("é˜Ÿåˆ—å®Œæˆé”€æ¯\n");
+}
+void clearQueue(LinkQueue & Q)
+{
+	if (queueEmpty(Q))
+	{
+		printf("é˜Ÿåˆ—ä¸éœ€è¦æ¸…ç†ï¼Œæœ¬æ¥å°±æ˜¯ç©ºçš„\n");
+		return;
+	}
+	QNode * p = Q.head->next;//é¦–å…ƒèŠ‚ç‚¹
+	QNode * q;
+	while (p)
+	{
+		q = p->next;
+		delete p;
+		p = q;
+	}
+	Q.back = Q.head;
+	Q.head->next = nullptr;
+}
+int queueLength(LinkQueue & Q)
+{
+	int len = 0;
+	QNode * p = Q.head;
+	while (p->next)
+	{
+		len++;
+		p = p->next;
+	}
+	return len;
+}
+ElementType getTop(LinkQueue & Q)
+{
+	if (queueEmpty(Q))
+		return INF;//è¿”å›æ— æ•ˆå€¼
+	else
+		return Q.head->next->data;
+}
+void push(LinkQueue & Q, ElementType e)
+{
+	//å…¥é˜Ÿ
+	if (Q.back == nullptr)
+	{
+		printf("é˜Ÿåˆ—æ²¡æœ‰åˆå§‹åŒ–,ä¸å…è®¸æ’å…¥\n");
+		return;
+	}
+	QNode * temp = new QNode;
+	temp->data = e;
+	Q.back->next = temp;
+	temp->next = nullptr;
+	Q.back = temp;
+}
+void pop(LinkQueue & Q)
+{
+	if (queueEmpty(Q))
+	{
+		printf("å¼¹å‡ºå¤±è´¥\n");
+		return;
+	}
+	QNode * temp = Q.head->next;//è¦åˆ çš„
+	Q.head->next = temp->next;
+	delete temp;
+}
+void queueTraverse(LinkQueue & Q)
+{
+
+	printf("=================================\n");
+	if (queueEmpty(Q))
+		printf("é˜Ÿåˆ—ä¸ºç©ºï¼Œæ²¡æœ‰å…ƒç´ ï¼\n");
+	else
+	{
+		printf("ä»é˜Ÿå¤´å¼€å§‹ä¾æ¬¡ä¸ºï¼š\n");
+		QNode * temp = Q.head->next;//å¤´èŠ‚ç‚¹
+		while (temp)
+		{
+			printf("%d---", temp->data);
+			temp = temp->next;
+		}
+		printf("ç»“æŸ\n");
+	}
+	printf("=================================\n");
+
+}
+
+int main()
+{
+	LinkQueue Q;
+	initQueue(Q);//åˆå§‹åŒ–
+	queueTraverse(Q);
+	for (int i = 0; i < 5; ++i)
+	{
+		push(Q, i * 10 + 1);
+	}
+	pop(Q);
+	printf("ç°åœ¨é˜Ÿåˆ—çš„é•¿åº¦ä¸ºï¼š%d\n", queueLength(Q));
+	queueTraverse(Q);
+	printf("é˜Ÿå¤´å…ƒç´ ä¸ºï¼š%d\n", getTop(Q));
+	clearQueue(Q);
+	destoryQueue(Q);
+	return 0;
+}
 
 
-//Á´¶ÓÀıÌâ
-//#include<iostream>
-//using namespace std;
-//typedef struct Node
-//{
-//	int data;
-//	struct Node * next;
-//} QNode, *QueueList;
-//
-//void init(QueueList & Q)
-//{
-//	Q = new QNode;//Í·½Úµã
-//	Q->next = NULL;
-//}
-//
-//void push(QueueList & Q, int data)
-//{
-//	QNode * q = Q;
-//	QNode * temp = new QNode;
-//	temp->data = data;
-//	if (!Q->next)
-//	{
-//		//²åÈëµÚÒ»¸ö½Úµã
-//		q->next = temp;
-//		temp->next = temp;
-//	}
-//	else
-//	{
-//		temp->next = q->next->next;
-//		q->next->next = temp;
-//		q->next = temp;
-//	}
-//}
-//
-//void pop(QueueList & Q)
-//{
-//	QNode * temp = Q->next->next;//ÒªÉ¾³ıµÄ½Úµã
-//	if (temp == Q->next)//ÒªÉ¾³ıµÄÊÇÎ²½Úµã
-//	{
-//		delete temp;
-//		Q->next = NULL;
-//		return;
-//	}
-//	Q->next->next = temp->next;
-//	delete temp;
-//}
-//
-//void show(QueueList & Q)
-//{
-//	if (Q->next == NULL)
-//	{
-//		printf("¶ÓÁĞÒÑ¾­Îª¿Õ£¡\n");
-//		return;
-//	}
-//	QNode * h = Q->next->next;//¼ÇÂ¼¶ÓÍ·
-//	QNode * p = Q->next->next;//¶ÓÍ·
-//	do
-//	{
-//		printf("%d ", p->data);
-//		p = p->next;
-//	} while (p!= h);
-//	printf("\n");
-//}
-//int main()
-//{
-//	QueueList Q;
-//	init(Q);//³õÊ¼»¯²Ù×÷
-//	int n;
-//	cin >> n;
-//	int data;
-//	while (n--)
-//	{
-//		cin >> data;
-//		push(Q, data);
-//	}
-//	int m;
-//	cin >> m;
-//	while (m--)
-//	{
-//		pop(Q);
-//	}
-//	show(Q);
-//	return 0;
-//}
+// é“¾é˜Ÿä¾‹é¢˜
+// #include<iostream>
+// using namespace std;
+// typedef struct Node
+// {
+// 	int data;
+// 	struct Node * next;
+// } QNode, *QueueList;
+
+// void init(QueueList & Q)
+// {
+// 	Q = new QNode;//å¤´èŠ‚ç‚¹
+// 	Q->next = NULL;
+// }
+
+// void push(QueueList & Q, int data)
+// {
+// 	QNode * q = Q;
+// 	QNode * temp = new QNode;
+// 	temp->data = data;
+// 	if (!Q->next)
+// 	{
+// 		//æ’å…¥ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
+// 		q->next = temp;
+// 		temp->next = temp;
+// 	}
+// 	else
+// 	{
+// 		temp->next = q->next->next;
+// 		q->next->next = temp;
+// 		q->next = temp;
+// 	}
+// }
+
+// void pop(QueueList & Q)
+// {
+// 	QNode * temp = Q->next->next;//è¦åˆ é™¤çš„èŠ‚ç‚¹
+// 	if (temp == Q->next)//è¦åˆ é™¤çš„æ˜¯å°¾èŠ‚ç‚¹
+// 	{
+// 		delete temp;
+// 		Q->next = NULL;
+// 		return;
+// 	}
+// 	Q->next->next = temp->next;
+// 	delete temp;
+// }
+
+// void show(QueueList & Q)
+// {
+// 	if (Q->next == NULL)
+// 	{
+// 		printf("é˜Ÿåˆ—å·²ç»ä¸ºç©ºï¼\n");
+// 		return;
+// 	}
+// 	QNode * h = Q->next->next;//è®°å½•é˜Ÿå¤´
+// 	QNode * p = Q->next->next;//é˜Ÿå¤´
+// 	do
+// 	{
+// 		printf("%d ", p->data);
+// 		p = p->next;
+// 	} while (p!= h);
+// 	printf("\n");
+// }
+// int main()
+// {
+// 	QueueList Q;
+// 	init(Q);//åˆå§‹åŒ–æ“ä½œ
+// 	int n;
+// 	cin >> n;
+// 	int data;
+// 	while (n--)
+// 	{
+// 		cin >> data;
+// 		push(Q, data);
+// 	}
+// 	int m;
+// 	cin >> m;
+// 	while (m--)
+// 	{
+// 		pop(Q);
+// 	}
+// 	show(Q);
+// 	return 0;
+// }
