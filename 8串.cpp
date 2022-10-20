@@ -1,62 +1,62 @@
-////´®
-//#include"M.h"
-//void getNext(string s, int * next)//»ñÈ¡nextÊı×é
-//{
-//	next[0] = 0;
-//	int j = 0;//Ç°×ºµÄÄ©Î²
-//	int i = 1;//ºó×ºµÄÄ©Î²
-//	for (int i = 1; i <s.size(); ++i)
-//	{
-//		while (s[i] != s[j] && j > 0)
-//		{
-//			//´ËÊ±±íÊ¾Ç°×ºµÄÄ©Î²µÄÖµÓëºó×ºµÄÄ©Î²µÄÖµ²»ÏàÍ¬
-//			j = next[j - 1];
-//		}
-//		if (s[i] == s[j])
-//		{
-//			j++;
-//
-//		}
-//		next[i] = j;
-//	}
-//}
-//
-//int kmp(string t, string s, int * next)
-//{
-//	int j = 0;
-//	for (int i = 0; i < t.size();)
-//	{
-//		if (s[j] == t[i])
-//		{
-//			if (j == s.size() - 1)
-//			{
-//				//±ÈÍêÁË
-//				return (int)(i - s.size() + 1);
-//			}
-//			j++;
-//			i++;
-//		}
-//		else
-//		{
-//			j = next[j - 1];
-//		}
-//	}
-//	return -1;//Ã»ÕÒµ½
-//}
-//int main()
-//{
-//	string s = "aabaaf";
-//	string t = "aabaabaaf";
-//	int next[10] = { 0 };
-//	getNext(s, next);
-//	//´òÓ¡nextÊı×é
-//	for (int i = 0; i < s.size(); ++i)
-//	{
-//		printf("%d\t", next[i]);
-//	}
-//	printf("\n");
-//
-//	int ans = kmp(t, s, next);
-//	printf("%d\n", ans);
-//	return 0;
-//}
+//ä¸²   kmpç®—æ³•çš„å®ç°
+#include"M.h"
+void getNext(string s, int * next)//è·å–nextæ•°ç»„
+{
+	next[0] = 0;
+	int j = 0;//å‰ç¼€çš„æœ«å°¾
+	int i = 1;//åç¼€çš„æœ«å°¾
+	for (int i = 1; i <s.size(); ++i)
+	{
+		while (s[i] != s[j] && j > 0)
+		{
+			//æ­¤æ—¶è¡¨ç¤ºå‰ç¼€çš„æœ«å°¾çš„å€¼ä¸åç¼€çš„æœ«å°¾çš„å€¼ä¸ç›¸åŒ
+			j = next[j - 1];
+		}
+		if (s[i] == s[j])
+		{
+			j++;
+
+		}
+		next[i] = j;
+	}
+}
+
+int kmp(string t, string s, int * next)
+{
+	int j = 0;
+	for (int i = 0; i < t.size();)
+	{
+		if (s[j] == t[i])
+		{
+			if (j == s.size() - 1)
+			{
+				//æ¯”å®Œäº†
+				return (int)(i - s.size() + 1);
+			}
+			j++;
+			i++;
+		}
+		else
+		{
+			j = next[j - 1];
+		}
+	}
+	return -1;//æ²¡æ‰¾åˆ°
+}
+int main()
+{
+	string s = "aabaaf";
+	string t = "aabaabaaf";
+	int next[10] = { 0 };
+	getNext(s, next);
+	//æ‰“å°nextæ•°ç»„
+	for (int i = 0; i < s.size(); ++i)
+	{
+		printf("%d\t", next[i]);
+	}
+	printf("\n");
+
+	int ans = kmp(t, s, next);
+	printf("%d\n", ans);
+	return 0;
+}
