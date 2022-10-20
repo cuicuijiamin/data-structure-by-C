@@ -1,117 +1,117 @@
-//¶ÓÁĞ½á¹¹¡ª¡ªË³Ğò¶ÓÁĞ
-//Ñ­»·¶ÓÁĞ£ºÖØ¸´ÀûÓÃ¿Õ¼ä
-//#include"M.h"
-//typedef int ElementType;
-//const int MAXSIZE = 100;//¶ÓÁĞ
-//const int INF = 1000000;
-//typedef struct 
-//{
-//	ElementType * base;
-//	int h;//¶ÓÍ·ÏÂ±ê
-//	int b;//¶ÓÎ²ÏÂ±ê
-//}sqQueue;
-//
-//void initQueue(sqQueue & Q);
-//void clearQueue(sqQueue &Q);
-//void destoryQueue(sqQueue & Q);
-//bool queueEmpty(sqQueue & Q);
-//bool queueFull(sqQueue & Q);
-//int queueLength(sqQueue & Q);
-//
-//void initQueue(sqQueue & Q)
-//{
-//	Q.base = new ElementType[MAXSIZE];
-//	if (Q.base == nullptr)printf("·ÖÅäÊ§°Ü£¬Çë¼ì²é¼ÆËã»úÄÚ´æ\n");
-//	Q.b = Q.h =0;//´ú±í¿Õ
-//}
-//void clearQueue(sqQueue &Q)
-//{
-//    Q.b = Q.h;
-//}
-//void destoryQueue(sqQueue & Q)
-//{
-//	delete[]Q.base;
-//  Q.base=nullptr;
-//	Q.b = Q.h=0;
-//}
-//bool queueEmpty(sqQueue & Q)
-//{
-//	if (Q.b == Q.h)
-//		return true;
-//	return false;//ÅĞ¿Õ
-//}
-//bool queueFull(sqQueue & Q)
-//{
-//	if ((Q.b+1)%MAXSIZE==Q.h)
-//		return true;//¶ÓÁĞÂúÁË
-//	return false;
-//}
-//int queueLength(sqQueue & Q)
-//{
-//	return (Q.b + MAXSIZE - Q.h) % MAXSIZE;
-//}
-//void push(sqQueue & Q,ElementType data)//Èë¶Ó
-//{
-//	if (queueFull(Q))
-//	{
-//		printf("ÒÑ¾­ÂúÁË£¬²»×¼²åÈë\n");
-//		return;
-//	}
-//	Q.base[Q.b] = data;
-//	Q.b = (Q.b + 1) % MAXSIZE;
-//
-//}
-//void pop(sqQueue & Q)//³ö¶Ó
-//{
-//	if (queueEmpty(Q))
-//	{
-//		printf("¶ÓÁĞ¿ÕÁË£¬Ã»ÓĞ³ö¶ÓÔªËØ\n");
-//		return;
-//	}
-//	Q.h = (Q.h + 1) % MAXSIZE;
-//}
-//ElementType getTop(sqQueue & Q)//»ñÈ¡¶ÓÍ·ÔªËØ
-//{
-//	if (queueEmpty(Q))
-//	{
-//		printf("±§Ç¸Ã»ÓĞ¶ÓÍ·ÔªËØ¿ÉÒÔ»ñÈ¡\n");
-//		return INF;//·µ»ØÒ»¸öÎŞĞ§Öµ
-//	}
-//	return Q.base[Q.h];
-//}
-//void queueTraverse(sqQueue & Q)
-//{
-//	if (queueEmpty(Q))
-//	{
-//		printf("¶ÓÁĞµ±ÖĞÃ»ÓĞÔªËØ\n");
-//		return;
-//	}
-//	int temp = Q.h;
-//	printf("================================\n");
-//	printf("´Ó¶ÓÍ·¿ªÊ¼ÒÀ´ÎÎª£º\n");
-//	while (temp != Q.b)
-//	{
-//		printf("%d---", Q.base[temp]);
-//		temp = (temp + 1) % MAXSIZE;
-//	}
-//	printf("½áÊø");
-//	printf("\n================================\n");
-//}
-//int main()
-//{
-//	sqQueue Q;
-//	initQueue(Q);
-//	for (int i = 0; i < 50; ++i)
-//	{
-//		push(Q, i * 10+1);
-//	}
-//	queueTraverse(Q);
-//	printf("Ä¿Ç°µÄ¶ÓÁĞ³¤¶ÈÊÇ£º%d\n", queueLength(Q));
-//
-//	pop(Q);
-//	queueTraverse(Q);
-//	printf("¶ÓÍ·ÔªËØÊÇ£º%d", getTop(Q));
-//
-//	clearQueue(Q);
-//	destoryQueue(Q);
-//}
+é˜Ÿåˆ—ç»“æ„â€”â€”é¡ºåºé˜Ÿåˆ—
+å¾ªç¯é˜Ÿåˆ—ï¼šé‡å¤åˆ©ç”¨ç©ºé—´
+#include"M.h"
+typedef int ElementType;
+const int MAXSIZE = 100;//é˜Ÿåˆ—
+const int INF = 1000000;
+typedef struct 
+{
+	ElementType * base;
+	int h;//é˜Ÿå¤´ä¸‹æ ‡
+	int b;//é˜Ÿå°¾ä¸‹æ ‡
+}sqQueue;
+
+void initQueue(sqQueue & Q);
+void clearQueue(sqQueue &Q);
+void destoryQueue(sqQueue & Q);
+bool queueEmpty(sqQueue & Q);
+bool queueFull(sqQueue & Q);
+int queueLength(sqQueue & Q);
+
+void initQueue(sqQueue & Q)
+{
+	Q.base = new ElementType[MAXSIZE];
+	if (Q.base == nullptr)printf("åˆ†é…å¤±è´¥ï¼Œè¯·æ£€æŸ¥è®¡ç®—æœºå†…å­˜\n");
+	Q.b = Q.h =0;//ä»£è¡¨ç©º
+}
+void clearQueue(sqQueue &Q)
+{
+    Q.b = Q.h;
+}
+void destoryQueue(sqQueue & Q)
+{
+	delete[]Q.base;
+  Q.base=nullptr;
+	Q.b = Q.h=0;
+}
+bool queueEmpty(sqQueue & Q)
+{
+	if (Q.b == Q.h)
+		return true;
+	return false;//åˆ¤ç©º
+}
+bool queueFull(sqQueue & Q)
+{
+	if ((Q.b+1)%MAXSIZE==Q.h)
+		return true;//é˜Ÿåˆ—æ»¡äº†
+	return false;
+}
+int queueLength(sqQueue & Q)
+{
+	return (Q.b + MAXSIZE - Q.h) % MAXSIZE;
+}
+void push(sqQueue & Q,ElementType data)//å…¥é˜Ÿ
+{
+	if (queueFull(Q))
+	{
+		printf("å·²ç»æ»¡äº†ï¼Œä¸å‡†æ’å…¥\n");
+		return;
+	}
+	Q.base[Q.b] = data;
+	Q.b = (Q.b + 1) % MAXSIZE;
+
+}
+void pop(sqQueue & Q)//å‡ºé˜Ÿ
+{
+	if (queueEmpty(Q))
+	{
+		printf("é˜Ÿåˆ—ç©ºäº†ï¼Œæ²¡æœ‰å‡ºé˜Ÿå…ƒç´ \n");
+		return;
+	}
+	Q.h = (Q.h + 1) % MAXSIZE;
+}
+ElementType getTop(sqQueue & Q)//è·å–é˜Ÿå¤´å…ƒç´ 
+{
+	if (queueEmpty(Q))
+	{
+		printf("æŠ±æ­‰æ²¡æœ‰é˜Ÿå¤´å…ƒç´ å¯ä»¥è·å–\n");
+		return INF;//è¿”å›ä¸€ä¸ªæ— æ•ˆå€¼
+	}
+	return Q.base[Q.h];
+}
+void queueTraverse(sqQueue & Q)
+{
+	if (queueEmpty(Q))
+	{
+		printf("é˜Ÿåˆ—å½“ä¸­æ²¡æœ‰å…ƒç´ \n");
+		return;
+	}
+	int temp = Q.h;
+	printf("================================\n");
+	printf("ä»é˜Ÿå¤´å¼€å§‹ä¾æ¬¡ä¸ºï¼š\n");
+	while (temp != Q.b)
+	{
+		printf("%d---", Q.base[temp]);
+		temp = (temp + 1) % MAXSIZE;
+	}
+	printf("ç»“æŸ");
+	printf("\n================================\n");
+}
+int main()
+{
+	sqQueue Q;
+	initQueue(Q);
+	for (int i = 0; i < 50; ++i)
+	{
+		push(Q, i * 10+1);
+	}
+	queueTraverse(Q);
+	printf("ç›®å‰çš„é˜Ÿåˆ—é•¿åº¦æ˜¯ï¼š%d\n", queueLength(Q));
+
+	pop(Q);
+	queueTraverse(Q);
+	printf("é˜Ÿå¤´å…ƒç´ æ˜¯ï¼š%d", getTop(Q));
+
+	clearQueue(Q);
+	destoryQueue(Q);
+}
