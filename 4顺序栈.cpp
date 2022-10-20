@@ -1,170 +1,170 @@
-////Õ»½á¹¹¡ª¡ªË³ĞòÕ»
-//#include"M.h"
-//#define INF 10000000
-//#define INIT_SIZE 100
-//typedef int ElementType;
-//typedef struct
-//{
-//	ElementType* base;//Õ»µ×
-//	ElementType* top;//Õ»µ×
-//	int stackSize;//Õ»µÄ¿Õ¼ä
-//}SqStack;
-//void initStack(SqStack& S)
-//{
-//	S.base = new ElementType[INIT_SIZE];//
-//	if (!S.base)cout << "ÄÚ´æ·ÖÅäÊ§°Ü£¬Çë¼ì²é¼ÆËã»úÄÚ´æ" << endl;
-//	S.top = S.base;//Ö¸ÏòÏàÍ¬£¬´ú±íÊÇ¿Õ
-//}
-//void destoryStack(SqStack& S)
-//{
-//	delete []S.base;
-//	S.base = nullptr;//ÖÃ¿Õ
-//}
-//void clearStack(SqStack& S)
-//{
-//	S.top = S.base;
-//}
-//bool stackEmpty(SqStack& S)
-//{
-//	if (S.top == S.base)
-//		return true;
-//	else
-//		return false;
-//}
-//int stackLength(SqStack& S)
-//{
-//	return S.top - S.base;
-//}
-//int getTop(SqStack& S)
-//{
-//	if (!stackEmpty(S))
-//		return *(S.top-1);
-//	else
-//		return INF;
-//}
-//void expand(SqStack& S)
-//{
-//	int size = S.stackSize + S.stackSize / 2 > 1 ? S.stackSize : 1;
-//	ElementType* temp = new ElementType[size];//ĞÂµÄ´ó¿Õ¼ä·ÖÅä
-//	int len = S.top - S.base;
-//	for (int i = 0; i < len; ++i)
-//	{
-//		temp[i] = S.base[i];
-//	}
-//	delete []S.base;//É¾³ıÔ­À´µÄĞ¡ÄÚ´æ
-//	S.base = temp;
-//	S.top = S.base + len;
-//}
-//void push(SqStack& S,int insertNum)
-//{
-//	if (S.top - S.base == S.stackSize)//ÂúÁË
-//	{
-//		expand(S);
-//	}
-//	//²åÈë
-//	*S.top = insertNum;
-//	S.top++;
-//}
-//void pop(SqStack& S)
-//{
-//	//µ¯³ö
-//	if (stackEmpty(S))
-//	{
-//		cout << "Õ»ÒÑ¾­¿ÕÁË£¬Ã»°ì·¨ÔÙ½øĞĞÉ¾³ı" << endl;
-//		return;
-//	}
-//	S.top--;
-//}
-//void stackTraverse(SqStack& S)
-//{
-//	printf("===========================\n");
-//	ElementType* temp = S.base;
-//	for (; temp != S.top; ++temp)
-//	{
-//		cout << *temp << "--";
-//	}
-//	printf("\n==========================\n");
-//}
-//int main()
-//{
-//	SqStack S;
-//	initStack(S);
-//	for (int i = 0; i < 10; ++i)
-//	{
-//		push(S, i);//²åÈë
-//	}
-//	stackTraverse(S);
-//	pop(S);//É¾³ı
-//	stackTraverse(S);
-//}
+//æ ˆç»“æ„â€”â€”é¡ºåºæ ˆ
+#include"M.h"
+#define INF 10000000
+#define INIT_SIZE 100
+typedef int ElementType;
+typedef struct
+{
+	ElementType* base;//æ ˆåº•
+	ElementType* top;//æ ˆåº•
+	int stackSize;//æ ˆçš„ç©ºé—´
+}SqStack;
+void initStack(SqStack& S)
+{
+	S.base = new ElementType[INIT_SIZE];//
+	if (!S.base)cout << "å†…å­˜åˆ†é…å¤±è´¥ï¼Œè¯·æ£€æŸ¥è®¡ç®—æœºå†…å­˜" << endl;
+	S.top = S.base;//æŒ‡å‘ç›¸åŒï¼Œä»£è¡¨æ˜¯ç©º
+}
+void destoryStack(SqStack& S)
+{
+	delete []S.base;
+	S.base = nullptr;//ç½®ç©º
+}
+void clearStack(SqStack& S)
+{
+	S.top = S.base;
+}
+bool stackEmpty(SqStack& S)
+{
+	if (S.top == S.base)
+		return true;
+	else
+		return false;
+}
+int stackLength(SqStack& S)
+{
+	return S.top - S.base;
+}
+int getTop(SqStack& S)
+{
+	if (!stackEmpty(S))
+		return *(S.top-1);
+	else
+		return INF;
+}
+void expand(SqStack& S)
+{
+	int size = S.stackSize + S.stackSize / 2 > 1 ? S.stackSize : 1;
+	ElementType* temp = new ElementType[size];//æ–°çš„å¤§ç©ºé—´åˆ†é…
+	int len = S.top - S.base;
+	for (int i = 0; i < len; ++i)
+	{
+		temp[i] = S.base[i];
+	}
+	delete []S.base;//åˆ é™¤åŸæ¥çš„å°å†…å­˜
+	S.base = temp;
+	S.top = S.base + len;
+}
+void push(SqStack& S,int insertNum)
+{
+	if (S.top - S.base == S.stackSize)//æ»¡äº†
+	{
+		expand(S);
+	}
+	//æ’å…¥
+	*S.top = insertNum;
+	S.top++;
+}
+void pop(SqStack& S)
+{
+	//å¼¹å‡º
+	if (stackEmpty(S))
+	{
+		cout << "æ ˆå·²ç»ç©ºäº†ï¼Œæ²¡åŠæ³•å†è¿›è¡Œåˆ é™¤" << endl;
+		return;
+	}
+	S.top--;
+}
+void stackTraverse(SqStack& S)
+{
+	printf("===========================\n");
+	ElementType* temp = S.base;
+	for (; temp != S.top; ++temp)
+	{
+		cout << *temp << "--";
+	}
+	printf("\n==========================\n");
+}
+int main()
+{
+	SqStack S;
+	initStack(S);
+	for (int i = 0; i < 10; ++i)
+	{
+		push(S, i);//æ’å…¥
+	}
+	stackTraverse(S);
+	pop(S);//åˆ é™¤
+	stackTraverse(S);
+}
 
-//ÃÔ¹¬ÎÊÌâµÄÊµÏÖ
-//#include"M.h"
-//typedef struct Pos
-//{
-//	struct Pos(int x,int y):x(x),y(y){}
-//	int x;
-//	int y;
-//}pos;
-//const int MAXR = 5, MAXC = 5;
-//int arr[5][5] =
-//{
-//	1,0,1,1,1,
-//	1,0,0,0,0,
-//	1,0,1,0,1,
-//	1,0,1,0,0,
-//	1,0,0,0,0
-//};
-//
-//int ans = 0;
-//int vis[10][10];
-//void dfs(pos b,pos e)
-//{
-//	if (b.x < 0 || b.x >= MAXR || b.y < 0 || b.y >= MAXC || arr[b.x][b.y] == 1 )//Ô½½ç»ò×²Ç½
-//	{
-//		printf("×ß(%d %d)×ß²»Í¨\n", b.x, b.y);
-//		return;
-//	}
-//	if (b.x == e.x && b.y == e.y)
-//	{
-//		ans++; 
-//		printf("×ß(%d %d)µ½ÖÕµã\n", b.x, b.y);
-//		return;
-//	}
-//	printf("×ß(%d %d)\n", b.x, b.y);
-//	if (arr[b.x - 1][b.y] == 0 && !vis[b.x - 1][b.y])
-//	{
-//		vis[b.x-1][b.y] = 1;
-//		dfs(pos(b.x - 1, b.y), e);//ÉÏ
-//		vis[b.x - 1][b.y] = 0;
-//	}
-//	if (arr[b.x][b.y+1] == 0 && !vis[b.x][b.y+1])
-//	{
-//		vis[b.x][b.y+1] = 1;
-//		dfs(pos(b.x, b.y+1), e);//ÓÒ
-//		vis[b.x][b.y+1] = 0;
-//	}
-//	if (arr[b.x + 1][b.y] == 0 && !vis[b.x + 1][b.y])
-//	{
-//		vis[b.x + 1][b.y] = 1;
-//		dfs(pos(b.x + 1, b.y), e);//ÏÂ
-//		vis[b.x + 1][b.y] = 0;
-//	}
-//	if (arr[b.x][b.y-1] == 0 && !vis[b.x][b.y - 1])
-//	{
-//		vis[b.x][b.y - 1] = 1;
-//		dfs(pos(b.x, b.y-1), e);//×ó
-//		vis[b.x][b.y - 1] = 0;
-//	}
-//	return;
-//}
-//int main()
-//{
-//	pos begin(0, 1);//ÃÔ¹¬µÄÆğµã
-//	pos end(1, 4);//ÃÔ¹¬µÄÖÕµã
-//	vis[0][1] = 1;
-//	dfs(begin,end);
-//	printf("%d", ans);
-//
-//	return 0;
-//}
+// è¿·å®«é—®é¢˜çš„å®ç°
+// #include"M.h"
+// typedef struct Pos
+// {
+// 	struct Pos(int x,int y):x(x),y(y){}
+// 	int x;
+// 	int y;
+// }pos;
+// const int MAXR = 5, MAXC = 5;
+// int arr[5][5] =
+// {
+// 	1,0,1,1,1,
+// 	1,0,0,0,0,
+// 	1,0,1,0,1,
+// 	1,0,1,0,0,
+// 	1,0,0,0,0
+// };
+
+// int ans = 0;
+// int vis[10][10];
+// void dfs(pos b,pos e)
+// {
+// 	if (b.x < 0 || b.x >= MAXR || b.y < 0 || b.y >= MAXC || arr[b.x][b.y] == 1 )//è¶Šç•Œæˆ–æ’å¢™
+// 	{
+// 		printf("èµ°(%d %d)èµ°ä¸é€š\n", b.x, b.y);
+// 		return;
+// 	}
+// 	if (b.x == e.x && b.y == e.y)
+// 	{
+// 		ans++; 
+// 		printf("èµ°(%d %d)åˆ°ç»ˆç‚¹\n", b.x, b.y);
+// 		return;
+// 	}
+// 	printf("èµ°(%d %d)\n", b.x, b.y);
+// 	if (arr[b.x - 1][b.y] == 0 && !vis[b.x - 1][b.y])
+// 	{
+// 		vis[b.x-1][b.y] = 1;
+// 		dfs(pos(b.x - 1, b.y), e);//ä¸Š
+// 		vis[b.x - 1][b.y] = 0;
+// 	}
+// 	if (arr[b.x][b.y+1] == 0 && !vis[b.x][b.y+1])
+// 	{
+// 		vis[b.x][b.y+1] = 1;
+// 		dfs(pos(b.x, b.y+1), e);//å³
+// 		vis[b.x][b.y+1] = 0;
+// 	}
+// 	if (arr[b.x + 1][b.y] == 0 && !vis[b.x + 1][b.y])
+// 	{
+// 		vis[b.x + 1][b.y] = 1;
+// 		dfs(pos(b.x + 1, b.y), e);//ä¸‹
+// 		vis[b.x + 1][b.y] = 0;
+// 	}
+// 	if (arr[b.x][b.y-1] == 0 && !vis[b.x][b.y - 1])
+// 	{
+// 		vis[b.x][b.y - 1] = 1;
+// 		dfs(pos(b.x, b.y-1), e);//å·¦
+// 		vis[b.x][b.y - 1] = 0;
+// 	}
+// 	return;
+// }
+// int main()
+// {
+// 	pos begin(0, 1);//è¿·å®«çš„èµ·ç‚¹
+// 	pos end(1, 4);//è¿·å®«çš„ç»ˆç‚¹
+// 	vis[0][1] = 1;
+// 	dfs(begin,end);
+// 	printf("%d", ans);
+
+// 	return 0;
+// }
