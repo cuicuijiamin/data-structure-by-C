@@ -1,157 +1,157 @@
-//#include"M.h"
-//const int MAXNUM = 100;
-//const int INF = 0x3f3f3f3f;
-//typedef char VerTexType;
-//typedef int ArcType;
-//
-//typedef struct
-//{
-//	VerTexType vexs[MAXNUM];//¶¥µã±í
-//	ArcType arcs[MAXNUM][MAXNUM];//ÁÚ½Ó¾ØÕó
-//	int vexnum, arcnum;
-//}AMGraph;
-//
-////»ñÈ¡Ä³¸öµãÔÚ¶¥µãÊý×éÖÐµÄÏÂ±êÖµ
-//int LocateVex(AMGraph G, VerTexType num)
-//{
-//	for (int i = 0; i < G.vexnum; ++i)
-//	{
-//		if (G.vexs[i] == num)
-//			return i;
-//	}
-//	return -1;
-//}
-//void createUDN(AMGraph & G)
-//{
-//	cout << "ÇëÊäÈëÒª´´½¨µÄÍ¼µÄ×Ü¶¥µãÊýÓë×Ü±ßÊý£º" << endl;
-//	cin >> G.vexnum >> G.arcnum;
-//	cout << "ÇëÊäÈë¸÷¸ö¶¥µãÖµ:" << endl;
-//	for (int i = 0; i < G.vexnum; ++i)
-//	{
-//		cin >> G.vexs[i];
-//	}
-//	for (int i = 0; i < G.vexnum; ++i)
-//	{
-//		for (int j = 0; j < G.vexnum; ++j)
-//			G.arcs[i][j] = INF;
-//	}
-//
-//	cout << "ÇëÊäÈë¹¹³ÉÃ¿Ìõ±ßµÄÁ½¸ö¶¥µãÓëÈ¨Öµ:" << endl;
-//	for (int i = 0; i < G.arcnum; ++i)
-//	{
-//		VerTexType v1, v2;
-//		ArcType val;
-//		cin >> v1 >> v2 >> val;
-//
-//		int t1 = LocateVex(G, v1);
-//		int t2 = LocateVex(G, v2);
-//		if (t1 == -1 || t2 == -1)
-//		{
-//			cout << "¶¥µãÊäÈë´íÎó£¬´´½¨ÎÞÏòÍ¼Ê§°Ü" << endl;
-//		}
-//		G.arcs[t1][t2] = val;
-//		G.arcs[t2][t1] = val;//ÈôÊÇÓÐÏòÍ¼¾Í°ÑÕâ¾ä×¢ÊÍµô
-//	}
-//}
-//
-//
-////Prim×îÐ¡Éú³ÉÊ÷Ëã·¨
-//struct closeedge
-//{
-//	VerTexType adjVex;//UÉÏµÄÄÇ¸ö¶¥µã
-//	ArcType lowcost;//Õâ¸ö¶¥µãÒý³öµÄ×îÐ¡±ßÉÏµÄÈ¨Öµ  ÕÒµã
-//}closeedge[MAXNUM];//closeedge[i]±íÊ¾´Óadjvexµ½iµÄ×î¶ÌÂ·¾¶Îªlowcost
-//int Min(AMGraph G,struct closeedge * closeedge)
-//{
-//	int index = 0;//»ñÈ¡×îÐ¡±ßµÄÏÂ±ê
-//	int mincost = INF;
-//	for (int i = 0; i < G.vexnum; ++i)
-//	{
-//		if (closeedge[i].lowcost != 0 && closeedge[i].lowcost < mincost)
-//		{
-//			index = i;
-//			mincost = closeedge[i].lowcost;
-//		}
-//	}
-//	return index;
-//}
-//void MiniSpanTree_Prim(AMGraph G, VerTexType u)//uÊÇ³õÊ¼¶¥µã¡ª¡ªËæ±ã´«
-//{
-//	int k = LocateVex(G, u);
-//	for (int i = 0; i < G.vexnum; ++i)
-//	{
-//		if (i != k)
-//			closeedge[i] = { u, G.arcs[k][i] };//½«closeedge³õÊ¼»¯Îªµ½uµÄ±ßÐÅÏ¢
-//	}
-//	closeedge[k].lowcost = 0;//kÒÑ¾­ÔÚu¼¯ºÏÖÐ£¬Îª0ÒâÎ¶×Å²»ÔÙ¿¼ÂÇ
-//	for (int i = 1; i < G.vexnum; ++i)
-//	{
-//		k = Min(G,closeedge);//»ñÈ¡µ½×îÐ¡±ßcloseedge[k]
-//		char u0 = closeedge[k].adjVex;
-//		char v0 = G.vexs[k];
-//		cout << u0 << "  " << v0 << endl;
-//		closeedge[k].lowcost = 0;//½«k¼ÓÈëuÖÐ
-//
-//		for (int j = 0; j < G.vexnum; ++j)//¸üÐÂÊ£ÓàµÄÃ¿×é×îÐ¡±ßÐÅÏ¢  ÒòÎªk´ÓjÓÐÐÂ±ß
-//		{
-//			if (G.arcs[k][j] < closeedge[j].lowcost)
-//				closeedge[j] = { G.vexs[k], G.arcs[k][j] };
-//		}
-//	}
-//}
-//
-//
-////µÏ½ÜË¹ÌØÀ­Ëã·¨
-//int s[MAXNUM];//sÎª¶¥µã¼¯ºÏ£¬ÔÚ¼¯ºÏÖÐÓÃ1À´±íÊ¾,²»ÔÚ¼¯ºÏÖÐÓÃ0À´±íÊ¾
-//int d[MAXNUM];
-//int path[MAXNUM];//¼ÇÂ¼×î¶ÌÂ·¾¶
-//void ShorttestPath_DIJ(AMGraph G, int v0)//v0ÎªÆðµã  Çóv0µ½ÆäÓà¶¥µãµÄ×î¶ÌÂ·¾¶
-//{
-//	int n = G.vexnum;//¶¥µãÊýÄ¿
-//	for (int v = 0; v < n; ++v)
-//	{
-//		s[v] = false;
-//		d[v] = G.arcs[v0][v];//ÒÔvÎªÖÕµãµÄÂ·¾¶³¤¶È
-//		if (d[v] < INF) path[v] = v0;//ÔÚÓÐÂ·¾¶µÄÌõ¼þÏÂ£¬¼ÇÂ¼Â·¾¶µÄvµÄÇ°Çý
-//		else path[v] = -1;
-//	}
-//	s[v0] = true;
-//	d[v0] = 0;//°ÑÆðµã·ÅÈës¼¯ºÏ
-//	for (int i = 1; i < n; ++i)//Ã¿Ñ­»·Ò»´Î£¬½«Ò»¸ö¶¥µã·ÅÈë¼¯ºÏsÖÐ£¬Ñ­»·Íê±Ïºó£¬ËùÒÔ½Úµã¶¼ÔÚs¼¯ºÏÖÐÁË
-//	{
-//		int min = INF;
-//	    int v;
-//		for (int w = 0; w < n; ++w)//ÕÒÂ·¾¶×î¶ÌµÄÄÇÌõ£¬¼ÇÂ¼ÖÕµãÎªv
-//		{
-//			if (!s[w] && d[w] < min)//w²»ÔÚ¼¯ºÏÖÐ Ñ¡Ôñµ±Ç°µÄ×î¶ÌÂ·¾¶
-//			{
-//				v = w;
-//				min = d[w];
-//			}
-//		}
-//		s[v] = true;//½«v·ÅÈë¼¯ºÏÖÐ
-//		for (int w = 0; w < n; ++w)//¼¯ºÏ¸üÐÂÒÔºódÊý×éÓëpathÊý×éÒ²Òª½øÐÐÏàÓ¦µÄ¸üÐÂ
-//		{
-//			if (!s[w] && d[v] + G.arcs[v][w] < d[w])//´óÇ°ÌáÊÇ¶ÔÓÚ²»ÔÚ¼¯ºÏµ±ÖÐµÄµã
-//			{
-//				d[w] = d[v] + G.arcs[v][w];
-//				path[w] = v;
-//			}
-//		}
-//	}
-//	//Êä³ö
-//	for (int i = 0; i < n; ++i)
-//		cout << "´Ó" << G.vexs[v0] << "µ½" << G.vexs[i] << "µÄ×î¶ÌÂ·¾¶Îª" << d[i] << endl;
-//}
-//
-//
-//int main()
-//{
-//	freopen("in.txt", "r", stdin);
-//	freopen("out.txt", "w", stdout);
-//	AMGraph G;
-//	createUDN(G);
-//	cout << "×îÐ¡Éú³ÉÊ÷Îª£º" << endl;
-//	MiniSpanTree_Prim(G, 'A');
-//	ShorttestPath_DIJ(G, 0);
-//}
+#include"M.h"
+const int MAXNUM = 100;
+const int INF = 0x3f3f3f3f;
+typedef char VerTexType;
+typedef int ArcType;
+
+typedef struct
+{
+	VerTexType vexs[MAXNUM];//é¡¶ç‚¹è¡¨
+	ArcType arcs[MAXNUM][MAXNUM];//é‚»æŽ¥çŸ©é˜µ
+	int vexnum, arcnum;
+}AMGraph;
+
+//èŽ·å–æŸä¸ªç‚¹åœ¨é¡¶ç‚¹æ•°ç»„ä¸­çš„ä¸‹æ ‡å€¼
+int LocateVex(AMGraph G, VerTexType num)
+{
+	for (int i = 0; i < G.vexnum; ++i)
+	{
+		if (G.vexs[i] == num)
+			return i;
+	}
+	return -1;
+}
+void createUDN(AMGraph & G)
+{
+	cout << "è¯·è¾“å…¥è¦åˆ›å»ºçš„å›¾çš„æ€»é¡¶ç‚¹æ•°ä¸Žæ€»è¾¹æ•°ï¼š" << endl;
+	cin >> G.vexnum >> G.arcnum;
+	cout << "è¯·è¾“å…¥å„ä¸ªé¡¶ç‚¹å€¼:" << endl;
+	for (int i = 0; i < G.vexnum; ++i)
+	{
+		cin >> G.vexs[i];
+	}
+	for (int i = 0; i < G.vexnum; ++i)
+	{
+		for (int j = 0; j < G.vexnum; ++j)
+			G.arcs[i][j] = INF;
+	}
+
+	cout << "è¯·è¾“å…¥æž„æˆæ¯æ¡è¾¹çš„ä¸¤ä¸ªé¡¶ç‚¹ä¸Žæƒå€¼:" << endl;
+	for (int i = 0; i < G.arcnum; ++i)
+	{
+		VerTexType v1, v2;
+		ArcType val;
+		cin >> v1 >> v2 >> val;
+
+		int t1 = LocateVex(G, v1);
+		int t2 = LocateVex(G, v2);
+		if (t1 == -1 || t2 == -1)
+		{
+			cout << "é¡¶ç‚¹è¾“å…¥é”™è¯¯ï¼Œåˆ›å»ºæ— å‘å›¾å¤±è´¥" << endl;
+		}
+		G.arcs[t1][t2] = val;
+		G.arcs[t2][t1] = val;//è‹¥æ˜¯æœ‰å‘å›¾å°±æŠŠè¿™å¥æ³¨é‡ŠæŽ‰
+	}
+}
+
+
+//Primæœ€å°ç”Ÿæˆæ ‘ç®—æ³•
+struct closeedge
+{
+	VerTexType adjVex;//Uä¸Šçš„é‚£ä¸ªé¡¶ç‚¹
+	ArcType lowcost;//è¿™ä¸ªé¡¶ç‚¹å¼•å‡ºçš„æœ€å°è¾¹ä¸Šçš„æƒå€¼  æ‰¾ç‚¹
+}closeedge[MAXNUM];//closeedge[i]è¡¨ç¤ºä»Žadjvexåˆ°içš„æœ€çŸ­è·¯å¾„ä¸ºlowcost
+int Min(AMGraph G,struct closeedge * closeedge)
+{
+	int index = 0;//èŽ·å–æœ€å°è¾¹çš„ä¸‹æ ‡
+	int mincost = INF;
+	for (int i = 0; i < G.vexnum; ++i)
+	{
+		if (closeedge[i].lowcost != 0 && closeedge[i].lowcost < mincost)
+		{
+			index = i;
+			mincost = closeedge[i].lowcost;
+		}
+	}
+	return index;
+}
+void MiniSpanTree_Prim(AMGraph G, VerTexType u)//uæ˜¯åˆå§‹é¡¶ç‚¹â€”â€”éšä¾¿ä¼ 
+{
+	int k = LocateVex(G, u);
+	for (int i = 0; i < G.vexnum; ++i)
+	{
+		if (i != k)
+			closeedge[i] = { u, G.arcs[k][i] };//å°†closeedgeåˆå§‹åŒ–ä¸ºåˆ°uçš„è¾¹ä¿¡æ¯
+	}
+	closeedge[k].lowcost = 0;//kå·²ç»åœ¨ué›†åˆä¸­ï¼Œä¸º0æ„å‘³ç€ä¸å†è€ƒè™‘
+	for (int i = 1; i < G.vexnum; ++i)
+	{
+		k = Min(G,closeedge);//èŽ·å–åˆ°æœ€å°è¾¹closeedge[k]
+		char u0 = closeedge[k].adjVex;
+		char v0 = G.vexs[k];
+		cout << u0 << "  " << v0 << endl;
+		closeedge[k].lowcost = 0;//å°†kåŠ å…¥uä¸­
+
+		for (int j = 0; j < G.vexnum; ++j)//æ›´æ–°å‰©ä½™çš„æ¯ç»„æœ€å°è¾¹ä¿¡æ¯  å› ä¸ºkä»Žjæœ‰æ–°è¾¹
+		{
+			if (G.arcs[k][j] < closeedge[j].lowcost)
+				closeedge[j] = { G.vexs[k], G.arcs[k][j] };
+		}
+	}
+}
+
+
+//è¿ªæ°æ–¯ç‰¹æ‹‰ç®—æ³•
+int s[MAXNUM];//sä¸ºé¡¶ç‚¹é›†åˆï¼Œåœ¨é›†åˆä¸­ç”¨1æ¥è¡¨ç¤º,ä¸åœ¨é›†åˆä¸­ç”¨0æ¥è¡¨ç¤º
+int d[MAXNUM];
+int path[MAXNUM];//è®°å½•æœ€çŸ­è·¯å¾„
+void ShorttestPath_DIJ(AMGraph G, int v0)//v0ä¸ºèµ·ç‚¹  æ±‚v0åˆ°å…¶ä½™é¡¶ç‚¹çš„æœ€çŸ­è·¯å¾„
+{
+	int n = G.vexnum;//é¡¶ç‚¹æ•°ç›®
+	for (int v = 0; v < n; ++v)
+	{
+		s[v] = false;
+		d[v] = G.arcs[v0][v];//ä»¥vä¸ºç»ˆç‚¹çš„è·¯å¾„é•¿åº¦
+		if (d[v] < INF) path[v] = v0;//åœ¨æœ‰è·¯å¾„çš„æ¡ä»¶ä¸‹ï¼Œè®°å½•è·¯å¾„çš„vçš„å‰é©±
+		else path[v] = -1;
+	}
+	s[v0] = true;
+	d[v0] = 0;//æŠŠèµ·ç‚¹æ”¾å…¥sé›†åˆ
+	for (int i = 1; i < n; ++i)//æ¯å¾ªçŽ¯ä¸€æ¬¡ï¼Œå°†ä¸€ä¸ªé¡¶ç‚¹æ”¾å…¥é›†åˆsä¸­ï¼Œå¾ªçŽ¯å®Œæ¯•åŽï¼Œæ‰€ä»¥èŠ‚ç‚¹éƒ½åœ¨sé›†åˆä¸­äº†
+	{
+		int min = INF;
+	    int v;
+		for (int w = 0; w < n; ++w)//æ‰¾è·¯å¾„æœ€çŸ­çš„é‚£æ¡ï¼Œè®°å½•ç»ˆç‚¹ä¸ºv
+		{
+			if (!s[w] && d[w] < min)//wä¸åœ¨é›†åˆä¸­ é€‰æ‹©å½“å‰çš„æœ€çŸ­è·¯å¾„
+			{
+				v = w;
+				min = d[w];
+			}
+		}
+		s[v] = true;//å°†væ”¾å…¥é›†åˆä¸­
+		for (int w = 0; w < n; ++w)//é›†åˆæ›´æ–°ä»¥åŽdæ•°ç»„ä¸Žpathæ•°ç»„ä¹Ÿè¦è¿›è¡Œç›¸åº”çš„æ›´æ–°
+		{
+			if (!s[w] && d[v] + G.arcs[v][w] < d[w])//å¤§å‰ææ˜¯å¯¹äºŽä¸åœ¨é›†åˆå½“ä¸­çš„ç‚¹
+			{
+				d[w] = d[v] + G.arcs[v][w];
+				path[w] = v;
+			}
+		}
+	}
+	//è¾“å‡º
+	for (int i = 0; i < n; ++i)
+		cout << "ä»Ž" << G.vexs[v0] << "åˆ°" << G.vexs[i] << "çš„æœ€çŸ­è·¯å¾„ä¸º" << d[i] << endl;
+}
+
+
+int main()
+{
+	freopen("in.txt", "r", stdin);
+	freopen("out.txt", "w", stdout);
+	AMGraph G;
+	createUDN(G);
+	cout << "æœ€å°ç”Ÿæˆæ ‘ä¸ºï¼š" << endl;
+	MiniSpanTree_Prim(G, 'A');
+	ShorttestPath_DIJ(G, 0);
+}
