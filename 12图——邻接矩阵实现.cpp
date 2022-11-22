@@ -147,8 +147,8 @@ void ShorttestPath_DIJ(AMGraph G, int v0)//v0为起点  求v0到其余顶点的�
 
 int main()
 {
-	freopen("in.txt", "r", stdin);
-	freopen("out.txt", "w", stdout);
+	//freopen("in.txt", "r", stdin);
+	//freopen("out.txt", "w", stdout);
 	AMGraph G;
 	createUDN(G);
 	cout << "最小生成树为：" << endl;
